@@ -2,46 +2,59 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <div th:replace="base::headNav"></div>
-
+<nav id="nav_bar">
+    <ul id="navmenu">
+        <li><a class="current" href="/">Home</a></li>
+        <li ><a href="/departmentlist">Departments' Information</a></li>
+        <li><a href="/employeelist">Employees' Information</a></li>
+        <li><a href="/adddepartment">Add Departments</a></li>
+        <li><a href="/addemployee">Add Employees</a></li>
+    </ul>
+</nav><br/>
 
 <div style="width: 1000px;height: 600px;margin-left: 300px;" class="row">
-<table>
+<table class="content-table">
     <thead>
     <tr>
         <th>Department Name</th>
         <th>Director Name</th>
     </tr>
-    <thead>
+    </thead>
     <tbody>
     <tr th:each="department : ${departments}">
 
         <td th:text="${department.depname}"></td>
         <td>
-            <a th:href="@{update_department/{id}(id=${department.id})}">Update</a>
-            <a th:href="@{detail_department/{id}(id=${department.id})}">Details</a>
-            <a th:href="@{delete_department/{id}(id=${department.id})}">Delete</a>
+            <a th:href="@{update_department/{id}(id=${department.id})}" class="btn btn-primary btn-lg" role="button">Update</a>
+            <a th:href="@{detail_department/{id}(id=${department.id})}" class="btn btn-primary btn-lg" role="button">Details</a>
+            <a th:href="@{delete_department/{id}(id=${department.id})}" class="btn btn-primary btn-lg" role="button">Delete</a>
         </td>
     </tr>
-    <tbody>
+    </tbody>
 </table>
 
-<h1 >Employees</h1>
+<h4 style="margin: 30px;">Please enter the employees' information at the page of Add Employees. The recorded data will be listed below.</h4>
 
-<table>
+<table class="content-table">
+    <thead>
     <tr>
         <th>Employee's Name&nbsp;&nbsp;</th>
         <th>Job Title&nbsp;</th>
+        <th>Department Name</th>
     </tr>
+    </thead>
+    <tbody>
     <tr th:each="employee : ${employees}">
         <td th:text="${employee.name}"></td>
         <td th:text="${employee.jobtitle}"></td>
         <td th:text="${employee.department.depname}"></td>
         <td>
-            <a th:href="@{update_employee/{id}(id=${employee.id})}">Update</a>
-            <a th:href="@{detail_employee/{id}(id=${employee.id})}">Details</a>
-            <a th:href="@{delete_employee/{id}(id=${employee.id})}">Delete</a>
+            <a th:href="@{update_employee/{id}(id=${employee.id})}" class="btn btn-primary btn-lg" role="button">Update</a>
+            <a th:href="@{detail_employee/{id}(id=${employee.id})}" class="btn btn-primary btn-lg" role="button">Details</a>
+            <a th:href="@{delete_employee/{id}(id=${employee.id})}" class="btn btn-primary btn-lg" role="button">Delete</a>
         </td>
     </tr>
+    </tbody>
 </table>
 </div>
 

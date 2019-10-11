@@ -3,22 +3,35 @@
 
 <div th:replace="base::headNav"></div>
 
-
-<div style="width: 1000px;height: 600px;margin-left: 300px;" class="row">
+<nav id="nav_bar">
+    <ul id="navmenu">
+        <li><a  href="/">Home</a></li>
+        <li ><a class="current" href="/departmentlist">Departments' Information</a></li>
+        <li><a href="/employeelist">Employees' Information</a></li>
+        <li><a href="/adddepartment">Add Departments</a></li>
+        <li><a href="/addemployee">Add Employees</a></li>
+    </ul>
+</nav><br/>
+<div style="width: 1000px;margin-left: 300px;" class="row">
 
     Department Name: <span th:text="${department.depname}"></span><br />
 
     <span>Employees:</span><br>
-
+    <table>
+        <thead>
     <tr>
         <th>Employee Name&nbsp;&nbsp;</th>
         <th>Job Title</th>
     </tr>
-
+        </thead>
+        <tbody>
     <tr th:each="employee : ${department.employees}">
         <td th:text="${employee.name}"></td>
         <td th:text="${employee.jobtitle}"></td>
     </tr>
+        </tbody>
+</table>
+</div>
 <div th:replace="base::footer"></div>
 </body>
 </html>

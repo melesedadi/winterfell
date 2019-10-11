@@ -36,7 +36,7 @@ public class HomeController {
     }
 
 
-    @PostMapping("/processdepartment")
+    @PostMapping("/process")
     public String processDepartmentForm(@Valid Department department, BindingResult result){
 
         if (result.hasErrors()){
@@ -48,7 +48,7 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/departmentist")
+    @RequestMapping("/departmentlist")
 
     public String departmentList(Model model){
 
@@ -57,6 +57,10 @@ public class HomeController {
         return "departmentlist";
     }
 
+    @RequestMapping("/departmentlist1")
+    public String departmentList1(){
+        return "departmentlist";
+    }
 
     @GetMapping("/addemployee")
 
@@ -92,7 +96,10 @@ public class HomeController {
 
         return "employeelist";
     }
-
+    @RequestMapping("employeelist1")
+    public String employeeList1(){
+        return "employeelist";
+    }
 
     @RequestMapping("/detail_department/{id}")
 
