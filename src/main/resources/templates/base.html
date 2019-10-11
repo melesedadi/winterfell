@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:fragment="headNav">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="/css/style.css" rel="stylesheet" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Patua+One&display=swap" rel="stylesheet">
+        <title></title>
+
+    </head>
+
+
+    <div class="jumbotron " >
+        <h1 style="font-family: 'Dancing Script', cursive;
+font-family: 'Patua One', cursive;">Sterling Solutions, Inc.</h1>
+        <h3 style="font-family: 'Dancing Script', cursive;color:darkred;">Employees' Database</h3>
+    </div>
+
+    <nav id="nav_bar">
+        <ul id="navmenu">
+            <li><a class="current" href="/">Home</a></li>
+            <li ><a href="/departmentist">Departments' Information</a></li>
+            <li><a href="/employeelist">Employees' Information</a></li>
+            <li><a href="/adddepartment">Add Departments</a></li>
+            <li><a href="/addemployee">Add Employees</a></li>
+        </ul>
+    </nav><br/>
+
+</div>
+
+<div th:fragment="footer">
+    <footer>
+        <div class="footer-main-div" style="margin-left: 300px; width: 1100px; height: 80px;">
+            <p style="color:#ffcce6; ">&copy; Copyright 2019 Emily Marinovich.</p>
+
+
+        </div>
+
+    </footer><br/>
+</div>
+
+</html>

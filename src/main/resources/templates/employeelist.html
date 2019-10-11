@@ -1,15 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
-    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Patua+One&display=swap" rel="stylesheet">
+    <title></title>
+
 </head>
-<body>
+<body  >
+
+<div class="jumbotron " >
+    <h1 style="font-family: 'Dancing Script', cursive;
+font-family: 'Patua One', cursive;">Sterling Solutions, Inc.</h1>
+    <h3 style="font-family: 'Dancing Script', cursive;color:darkred;">Employees' Database</h3>
+</div>
+
+<nav id="nav_bar">
+    <ul id="navmenu">
+        <li><a class="current" href="/">Home</a></li>
+        <li ><a href="/departmentlist">Departments' Information</a></li>
+        <li><a href="/employeelist">Employees' Information</a></li>
+        <li><a href="/adddepartment">Add Departments</a></li>
+        <li><a href="/addemployee">Add Employees</a></li>
+    </ul>
+</nav><br/>
+
+<a style="margin-left: 30px;" href="/add" class="btn btn-primary btn-lg" role="button">Add a post </a>
+<br/>
+<div style="width: 1000px;height: 600px;margin-left: 300px;" class="row">
+
+    <table class="content-table">
+        <thead>
+        <tr>
+            <th>Employee Name&nbsp;&nbsp;</th>
+            <th>Job Title&nbsp;</th>
+            <th>Department Name</th>
+        </tr>
+        <thead>
+        <tbody>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.jobtitle}"></td>
+            <td th:text="${employee.department.depname}"></td>
+            <td>
+
+                <a th:href="@{/update_employee/{id}(id=${employee.id})}">Update</a>
+
+                <a th:href="@{/detail_employee/{id}(id=${employee.id})}">Details</a>
+
+                <a th:href="@{/delete_employee/{id}(id=${employee.id})}">Delete</a>
+
+            </td>
+        </tr>
+        <tbody>
+    </table>
+
+</div>
+<br/>
+<footer>
+    <div class="footer-main-div" style="margin-left: 300px; width: 1100px; height: 80px;">
+        <p style="color:#ffcce6; ">&copy; Copyright 2019 Emily Marinovich.</p>
 
 
-<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+    </div>
+
+</footer><br/>
 </body>
 </html>

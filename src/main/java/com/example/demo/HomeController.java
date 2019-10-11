@@ -70,7 +70,7 @@ public class HomeController {
     }
 
 
-    @PostMapping("/processEmpoloyee")
+    @PostMapping("/processempoloyee")
 
     public String processEmployeeForm(@Valid Employee employee, BindingResult result){
 
