@@ -21,6 +21,12 @@ public class Employee {
         this.jobtitle = jobtitle;
     }
 
+    public Employee(String name, String jobtitle, Department department) {
+        this.name = name;
+        this.jobtitle = jobtitle;
+        this.department = department;
+    }
+
     public long getId() {
         return id;
     }

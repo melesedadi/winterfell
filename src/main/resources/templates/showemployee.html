@@ -13,10 +13,12 @@
     </ul>
 </nav><br/>
 <div style="width: 1000px;margin-left: 300px;" class="row">
-    <h4 style="margin-left: 50px;">Employee Details</h4>
-    <h5 style="margin-left: 50px;">Employee Name: <span th:text="${employee.name}"></span></h5><br />
-    <h5>Employee Title: <span th:text="${employee.jobtitle}"></span></h5><br />
-    <h5>Department Name: <span th:text="${employee.department.depname}"></span></h5><br />
+    <div style="width:600px;height: 400px;margin-left: 40px;color:darkred;">
+    <h4 style="margin-left: 50px;">Employee Details</h4><br/>
+
+    Employee Name: <span th:text="${employee.name}"></span><br />
+    Employee Title: <span th:text="${employee.jobtitle}"></span><br />
+    Department Name: <span th:text="${employee.department.depname}"></span></div><br />
 </div>
     <div th:replace="base::footer"></div>
 </body>
