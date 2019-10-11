@@ -96,10 +96,7 @@ public class HomeController {
 
         return "employeelist";
     }
-    @RequestMapping("employeelist1")
-    public String employeeList1(){
-        return "employeelist";
-    }
+
 
     @RequestMapping("/detail_department/{id}")
 
