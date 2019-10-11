@@ -1,3 +1,6 @@
+
+
+
 body{
     background: url("/images/orange.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -123,10 +126,12 @@ form{
     color:darkred;
 }
 input[type=text]{
-    width:450px;
+    width:300px;
     padding:5px;
     font-size: 15px;
     color:gray;
+    margin:5px;
+    border-radius: 5px;
 }
 /*textarea{
     width:100%;
