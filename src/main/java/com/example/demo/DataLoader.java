@@ -4,10 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
+
 @Component
 public class DataLoader implements CommandLineRunner {
     @Autowired
     DepartmentRepository departmentRepository ;
+
+    EmployeeRepository employeeRepository;
 
     @Override
 

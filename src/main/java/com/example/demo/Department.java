@@ -9,7 +9,7 @@ public class Department {
     private long id;
     private String depname;
     private String directorname;
-    @OneToMany(mappedBy = "department",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "department",cascade = CascadeType.REMOVE, orphanRemoval = true)
     public Set<Employee> employees;
 
     public Department() {
