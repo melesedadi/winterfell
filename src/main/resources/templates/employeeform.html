@@ -34,7 +34,7 @@ font-family: 'Patua One', cursive;">Sterling Solutions, Inc.</h1>
 
     Employee Name:&nbsp;<input type="text" th:field="*{name}" />
 
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">&nbsp;&nbsp;</span>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">&nbsp;&nbsp;</span><br/>
 
     Job Title:&nbsp;<input type="text" th:field="*{jobtitle}" />
 
