@@ -83,9 +83,9 @@ public class HomeController {
 
     public String processEmployeeForm(@Valid Employee employee,  BindingResult result,@RequestParam("file") MultipartFile file){
 
-        if (result.hasErrors()||file.isEmpty()){
+        if (result.hasErrors()){
 
-            return "redirect:/employeeform";
+            return "employeeform";
         }
         /*if (file.isEmpty()){
             return "redirect:/employeeform";
