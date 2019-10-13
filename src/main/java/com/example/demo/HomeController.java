@@ -84,13 +84,13 @@ public class HomeController {
     public String processEmployeeForm(@Valid Employee employee,  BindingResult result,@RequestParam(value = "file", required = true) MultipartFile file, Model model){
        // model.addAttribute("employee",employee);
 
-        if (result.hasErrors()){
+        if (result.hasErrors()&&file.isEmpty()){
 
             return "redirect:/addemployee";
         }
-       if (file.isEmpty()){
+      /* if (file.isEmpty()){
             return "redirect:/addemployee";
-        }
+        }*/
         try {
             Map uploadResult =cloudc.upload(file.getBytes(),
                     ObjectUtils.asMap("resourcetype", "auto"));
