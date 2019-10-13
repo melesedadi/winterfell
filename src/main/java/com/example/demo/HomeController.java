@@ -81,8 +81,8 @@ public class HomeController {
 
     @PostMapping("/processempoloyee")
 
-    public String processEmployeeForm(@Valid Employee employee,  BindingResult result,@RequestParam("file") MultipartFile file, Model model){
-        model.addAttribute("employee",employee);
+    public String processEmployeeForm(@Valid Employee employee,  BindingResult result,@RequestParam(value = "file", required = true) MultipartFile file, Model model){
+       // model.addAttribute("employee",employee);
 
         if (result.hasErrors()){
 
