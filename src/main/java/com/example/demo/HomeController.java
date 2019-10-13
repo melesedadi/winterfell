@@ -62,10 +62,6 @@ public class HomeController {
         return "departmentlist";
     }
 
-   /* @RequestMapping("/departmentlist1")
-    public String departmentList1(){
-        return "departmentlist";
-    }*/
 
     @GetMapping("/addemployee")
 
@@ -82,7 +78,8 @@ public class HomeController {
     @PostMapping("/processempoloyee")
 
     public String processEmployeeForm(@RequestParam(value = "file", required = true) MultipartFile file, @Valid Employee employee,Model model, BindingResult result){
-       model.addAttribute("employee",employee);
+       //If the one of the field is empty, the model will know. Otherwise it won't has the validation function.
+        model.addAttribute("employee",employee);
 
         if (result.hasErrors()){
 
