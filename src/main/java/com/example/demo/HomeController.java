@@ -81,16 +81,13 @@ public class HomeController {
 
     @PostMapping("/processempoloyee")
 
-    public String processEmployeeForm(@Valid Employee employee,  BindingResult result,@RequestParam(value = "file", required = true) MultipartFile file, Model model){
+    public String processEmployeeForm(@Valid Employee employee,@RequestParam(value = "file", required = true) MultipartFile file,  BindingResult result){
        // model.addAttribute("employee",employee);
 
-        if (result.hasErrors()&&file.isEmpty()){
 
+       if (file.isEmpty()){
             return "redirect:/addemployee";
         }
-      /* if (file.isEmpty()){
-            return "redirect:/addemployee";
-        }*/
         try {
             Map uploadResult =cloudc.upload(file.getBytes(),
                     ObjectUtils.asMap("resourcetype", "auto"));
@@ -98,6 +95,11 @@ public class HomeController {
             employeeRepository.save(employee);
         } catch (IOException e){
             e.printStackTrace();
+            return "redirect:/addemployee";
+        }
+
+        if (result.hasErrors()){
+
             return "redirect:/addemployee";
         }
         employeeRepository.save(employee);
