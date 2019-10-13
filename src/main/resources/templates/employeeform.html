@@ -41,7 +41,7 @@
 
 </select>
 <br/>
-    <input hidden="hidden" style="margin:10px; border-radius: 5px;" type="file" name="file" id="real-file" th:field="*{headshot}">
+    <input hidden="hidden" style="margin:10px; border-radius: 5px;" type="file" name="file" id="file" th:field="*{headshot}">
     <span th:if="${#fields.hasErrors('headshot')}" th:errors="*{headshot}"></span>
     <button type="button"  id="custom-button" class="btn btn-warning btn-lg" role="button">Choose Employee Photo</button>
     <span id="custom-text">No file chosen, yet.</span>
@@ -63,7 +63,7 @@
 
 </footer><br/>
 <script type="text/javascript">
-    const realFileBtn= document.getElementById("real-file");
+    const realFileBtn= document.getElementById("file");
     const customBtn=document.getElementById("custom-button");
     const custom8Txt=document.getElementById("custom-text");
 
@@ -78,7 +78,7 @@
         }
     });
 
-//for fakepath on Chrome
+/*for fakepath on Chrome
     $(function() {
         $(".inputWrapper").mousedown(function() {
             var button = $(this);
@@ -91,7 +91,7 @@
             var filename = $(e.currentTarget).val().replace(/^.*\\/, "");
             $this.parent().find('span').text(filename);
         });
-    });
+    });*/
 </script>
 </body>
 </html>
