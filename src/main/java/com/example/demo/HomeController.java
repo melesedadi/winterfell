@@ -95,10 +95,10 @@ public class HomeController {
             Map uploadResult =cloudc.upload(file.getBytes(),
                     ObjectUtils.asMap("resourcetype", "auto"));
             employee.setHeadshot(uploadResult.get("url").toString());
-            /*employeeRepository.save(employee);*/
+            employeeRepository.save(employee);
         } catch (IOException e){
             e.printStackTrace();
-            return "redirect:/employeeform";
+            return "redirect:/addemployee";
         }
         employeeRepository.save(employee);
 
