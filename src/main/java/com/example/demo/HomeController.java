@@ -62,10 +62,10 @@ public class HomeController {
         return "departmentlist";
     }
 
-    @RequestMapping("/departmentlist1")
+   /* @RequestMapping("/departmentlist1")
     public String departmentList1(){
         return "departmentlist";
-    }
+    }*/
 
     @GetMapping("/addemployee")
 
@@ -83,13 +83,13 @@ public class HomeController {
 
     public String processEmployeeForm(@Valid Employee employee,  BindingResult result,@RequestParam("file") MultipartFile file){
 
-        if (result.hasErrors()){
+        if (result.hasErrors()||file.isEmpty()){
 
             return "employeeform";
         }
-        if (file.isEmpty()){
+        /*if (file.isEmpty()){
             return "redirect:/employeeform";
-        }
+        }*/
         try {
             Map uploadResult =cloudc.upload(file.getBytes(),
                     ObjectUtils.asMap("resourcetype", "auto"));
