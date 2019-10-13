@@ -87,9 +87,9 @@ public class HomeController {
 
             return "employeeform";
         }
-        /*if (file.isEmpty()){
+        if (file.isEmpty()){
             return "redirect:/employeeform";
-        }*/
+        }
         try {
             Map uploadResult =cloudc.upload(file.getBytes(),
                     ObjectUtils.asMap("resourcetype", "auto"));
