@@ -85,7 +85,7 @@ public class HomeController {
        // model.addAttribute("employee",employee);
 
 
-       if (file.isEmpty()&&result.hasErrors()){
+       if (file.isEmpty()){
             return "redirect:/addemployee";
         }
         try {
@@ -98,10 +98,10 @@ public class HomeController {
             return "redirect:/addemployee";
         }
 
-        /*if (result.hasErrors()){
+        if (result.hasErrors()){
 
             return "redirect:/addemployee";
-        }*/
+        }
         employeeRepository.save(employee);
 
         return "redirect:/employeelist";
