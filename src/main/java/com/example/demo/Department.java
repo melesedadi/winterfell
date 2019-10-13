@@ -8,24 +8,24 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String depname;
-    private String directorname;
+    private String headname;
     @OneToMany(mappedBy = "department",cascade = CascadeType.REMOVE, orphanRemoval = true)
     public Set<Employee> employees;
 
     public Department() {
     }
 
-    public Department(String depname, String directorname) {
+    public Department(String depname, String headname) {
         this.depname = depname;
-        this.directorname = directorname;
+        this.headname = headname;
     }
 
-    public String getDirectorname() {
-        return directorname;
+    public String getHeadname() {
+        return headname;
     }
 
-    public void setDirectorname(String directorname) {
-        this.directorname = directorname;
+    public void setHeadname(String headname) {
+        this.headname = headname;
     }
 
     public long getId() {

@@ -43,7 +43,7 @@
 
              <div th:each="department:${departments}">
                 <h5 th:text="${department.depname}"></h5>
-                <h6 th:inline="text"> Head of Department: [[${department.directorname}]].</h6>
+                <h6 th:inline="text"> Head of Department: [[${department.headname}]].</h6>
                 <ul style="list-style-type: square;">
                     <th:block th:each="employee:${department.employees}">
                         <li th:inline="text"><b>[[${employee.name}]]: </b>[[${employee.jobtitle}]]</li>

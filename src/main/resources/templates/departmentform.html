@@ -27,9 +27,9 @@
 
         <span th:if="${#fields.hasErrors('depname')}" th:errors="*{depname}"></span>
         <br>
-        Head of Department:&nbsp;<input type="text" th:field="*{directorname}" />
+        Head of Department:&nbsp;<input type="text" th:field="*{headname}" />
 
-        <span th:if="${#fields.hasErrors('directorname')}" th:errors="*{directorname}"></span>
+        <span th:if="${#fields.hasErrors('headname')}" th:errors="*{headname}"></span>
         <br>
         <input type="submit" value="Submit" class="btn btn-primary btn-lg" role="button"/>&nbsp;&nbsp;&nbsp;&nbsp;
         <a style="margin-top: 10px;" href="/" class="btn btn-primary btn-lg" role="button">See All information of the company. </a><br/>
