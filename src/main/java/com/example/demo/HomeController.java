@@ -100,7 +100,7 @@ public class HomeController {
 
         if (result.hasErrors()){
 
-            return "redirect:/addemployee";
+            return "employeeform";
         }
         employeeRepository.save(employee);
 
