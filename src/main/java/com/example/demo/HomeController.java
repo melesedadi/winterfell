@@ -83,7 +83,7 @@ public class HomeController {
 
     public String processEmployeeForm(@Valid Employee employee,  BindingResult result,@RequestParam("file") MultipartFile file){
 
-        if (result.hasErrors()&&file.isEmpty()){
+        if (result.hasErrors()){
 
             return "/addemployee";
         }
