@@ -84,7 +84,10 @@ public class HomeController {
     public String processEmployeeForm(@RequestParam(value = "file", required = true) MultipartFile file, @Valid Employee employee, BindingResult result){
        // model.addAttribute("employee",employee);
 
+        if (result.hasErrors()){
 
+            return "employeeform";
+        }
        if (file.isEmpty()){
             return "redirect:/addemployee";
         }
@@ -98,10 +101,7 @@ public class HomeController {
             return "redirect:/addemployee";
         }
 
-        if (result.hasErrors()){
 
-            return "redirect:/addemployee";
-        }
         employeeRepository.save(employee);
 
         return "redirect:/employeelist";
