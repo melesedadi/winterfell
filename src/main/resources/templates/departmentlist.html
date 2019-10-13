@@ -51,9 +51,9 @@ font-family: 'Patua One', cursive;">Sterling Solutions, Inc.</h1>
             <h5 style="margin: 40px;">After adding the information of the employees, the new data will be listed below properly.</h5>
 <ul>
              <div th:each="department:${departments}">
-                <h2 th:text="${department.depname}"></h2>
+                <h4 th:text="${department.depname}"></h4>
                 <h6 th:inline="text"> Director name: [[${department.directorname}]].</h6>
-                <ul>
+                <ul style="list-style-type: square;">
                     <th:block th:each="employee:${department.employees}">
                         <li th:inline="text"><b>[[${employee.name}]]: </b>[[${employee.jobtitle}]]</li>
                     </th:block>

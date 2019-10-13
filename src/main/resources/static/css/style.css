@@ -118,12 +118,13 @@ body{
 /*form*/
 form{
     margin-top: 40px;
-    width:600px;
+    width:850px;
     padding: 18px;
-    margin:auto;
+    /*margin:auto;*/
     background:#ffd6cc;
     font-size: 20px;
     color:darkred;
+    margin-left: 300px;
 }
 input[type=text]{
     width:300px;
@@ -133,6 +134,8 @@ input[type=text]{
     margin:5px;
     border-radius: 5px;
 }
+
+
 /*textarea{
     width:100%;
     font-size: 16px;
@@ -195,6 +198,7 @@ footer p {
     border-color: #3276b1;
     border-radius: 20px;
     font-size: 14px;
+    /*margin-left: 400px;*/
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -203,6 +207,32 @@ footer p {
     color: #FFF;
     border-color: #285e8e;
 }
+
+/* warning button*/
+#custom-text{
+    margin: 10px;
+    margin-bottom: 30px;
+}
+
+.btn-warning {
+    background-color: #FFF;
+    color: #d58512;
+    border-color: #ed9c28;
+    border-radius: 10px;
+    /*font-size: 14px;*/
+    margin-top:10px;
+    margin-bottom: 30px;
+    width:200px;
+
+}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active    {
+    background-color: #ed9c28;
+    color: #FFF;
+    border-color: #d58512;
+}
+
 /* success button
 .btn-success {
     background-color: #FFF;
@@ -233,20 +263,7 @@ footer p {
     border-color: #269abc;
 }*/
 
-/* warning button
-.btn-warning {
-    background-color: #FFF;
-    color: #d58512;
-    border-color: #ed9c28;
-    border-radius: 25px;
-}
-.btn-warning:hover,
-.btn-warning:focus,
-.btn-warning:active    {
-    background-color: #ed9c28;
-    color: #FFF;
-    border-color: #d58512;
-}*/
+
 
 /* danger button
 .btn-danger {

@@ -9,6 +9,7 @@ public class Employee {
     private long id;
     private String name;
     private String jobtitle;
+    private String headshot;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="department_id")
     private Department department;
@@ -49,6 +50,14 @@ public class Employee {
 
     public void setJobtitle(String jobtitle) {
         this.jobtitle = jobtitle;
+    }
+
+    public String getHeadshot() {
+        return headshot;
+    }
+
+    public void setHeadshot(String headshot) {
+        this.headshot = headshot;
     }
 
     public Department getDepartment() {

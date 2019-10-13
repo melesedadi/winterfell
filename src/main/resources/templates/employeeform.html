@@ -7,6 +7,7 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Patua+One&display=swap" rel="stylesheet">
+
 </head>
 <body  >
 
@@ -28,7 +29,7 @@ font-family: 'Patua One', cursive;">Sterling Solutions, Inc.</h1>
 
 <br/><br/>
 
-<form action="#" th:action="@{/processempoloyee}" th:object="${employee}" method="post">
+<form action="#" enctype="multipart/form-data" th:action="@{/processempoloyee}" th:object="${employee}" method="post">
 
     <input type="hidden" th:field="*{id}" />
 
@@ -51,10 +52,15 @@ font-family: 'Patua One', cursive;">Sterling Solutions, Inc.</h1>
             th:text="${department.depname}"></option>
 
 </select>
+<br/>
+    <input hidden="hidden" style="margin:10px; border-radius: 5px;" type="file" name="file" id="real-file" >
+    <button type="button"  id="custom-button" class="btn btn-warning btn-lg" role="button">Choose a Photo</button>
+    <span id="custom-text">No file chosen, yet.</span>
 
     <br>
 
     <input type="submit" value="Submit" class="btn btn-primary btn-lg" role="button">
+
 
 </form>
 
@@ -67,5 +73,36 @@ font-family: 'Patua One', cursive;">Sterling Solutions, Inc.</h1>
     </div>
 
 </footer><br/>
+<script type="text/javascript">
+    const realFileBtn= document.getElementById("real-file");
+    const customBtn=document.getElementById("custom-button");
+    const custom8Txt=document.getElementById("custom-text");
+
+    customBtn.addEventListener("click",function(){
+    realFileBtn.click();
+    });
+    realFileBtn.addEventListener("change",function () {
+        if(realFileBtn.value){
+            custom8Txt.innerHTML=realFileBtn.value+" has been chosen.";
+        }else {
+            custom8Txt.innerHTML="No file chosen,yet.";
+        }
+    });
+
+//for fakepath on Chrome
+    $(function() {
+        $(".inputWrapper").mousedown(function() {
+            var button = $(this);
+            button.addClass('clicked');
+            setTimeout(function(){
+                button.removeClass('clicked');
+            },50);
+        });
+        $('input[type=file]').on('change', function(e) {
+            var filename = $(e.currentTarget).val().replace(/^.*\\/, "");
+            $this.parent().find('span').text(filename);
+        });
+    });
+</script>
 </body>
 </html>

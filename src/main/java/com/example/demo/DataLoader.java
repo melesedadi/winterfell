@@ -11,7 +11,7 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     DepartmentRepository departmentRepository ;
 
-    EmployeeRepository employeeRepository;
+
 
     @Override
 

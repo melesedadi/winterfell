@@ -12,14 +12,21 @@
         <li><a href="/addemployee">Add Employees</a></li>
     </ul>
 </nav><br/>
-<div style="width: 1000px;margin-left: 300px;" class="row">
-    <div style="width:600px;height: 400px;margin-left: 40px;color:darkred;">
-    <h4 style="margin-left: 50px;">Employee Details</h4>
+<div style="width: 1000px;margin-left: 300px;" class="row" >
+    <div class="box" style="width:600px;height: 700px;margin-left: 40px;color:darkred;">
+    <h4 style="margin-left: 50px;margin-top: 30px;">Employee Details</h4><br/>
 
-    Employee Name: <span th:text="${employee.name}"></span><br />
+        <div class="content">Employee Name: <span th:text="${employee.name}"></span><br />
     Employee Title: <span th:text="${employee.jobtitle}"></span><br />
-    Department Name: <span th:text="${employee.department.depname}"></span></div><br />
+        Department Name: <span th:text="${employee.department.depname}"></span><br />
+        </div>
+        <div  class="imgBx" style="margin:30px;" th:if="${employee.headshot} !=null">
+            <img th:src="${employee.headshot}" width="250px" height="350px" />
+
+        </div>
+    </div>
 </div>
+
     <div th:replace="base::footer"></div>
 </body>
 </html>

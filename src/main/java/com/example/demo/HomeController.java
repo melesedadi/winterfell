@@ -1,15 +1,17 @@
 package com.example.demo;
 
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.Map;
+
 @Controller
 public class HomeController {
     @Autowired
@@ -17,6 +19,9 @@ public class HomeController {
 
     @Autowired
     EmployeeRepository employeeRepository;
+
+    @Autowired
+    CloudinaryConfig cloudc;
 
     @RequestMapping("/")
     public String home(Model model){
@@ -76,11 +81,23 @@ public class HomeController {
 
     @PostMapping("/processempoloyee")
 
-    public String processEmployeeForm(@Valid Employee employee, BindingResult result){
+    public String processEmployeeForm(@Valid Employee employee,  BindingResult result,@RequestParam("file") MultipartFile file){
 
         if (result.hasErrors()){
 
             return "employeeform";
+        }
+        if (file.isEmpty()){
+            return "redirect:/employeeform";
+        }
+        try {
+            Map uploadResult =cloudc.upload(file.getBytes(),
+                    ObjectUtils.asMap("resourcetype", "auto"));
+            employee.setHeadshot(uploadResult.get("url").toString());
+            /*employeeRepository.save(employee);*/
+        } catch (IOException e){
+            e.printStackTrace();
+            return "redirect:/employeeform";
         }
         employeeRepository.save(employee);
 
