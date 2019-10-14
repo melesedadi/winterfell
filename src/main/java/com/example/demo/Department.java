@@ -15,7 +15,7 @@ public class Department {
     /*@NotNull
     @Size(min=3)*/
     private String headname;
-    @OneToMany(mappedBy = "department",cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "department",cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true)
     public Set<Employee> employees;
 
     public Department() {
