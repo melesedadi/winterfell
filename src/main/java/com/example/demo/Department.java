@@ -3,6 +3,7 @@ package com.example.demo;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Set;
 @Entity
 public class Department {
@@ -15,7 +16,7 @@ public class Department {
     /*@NotNull
     @Size(min=3)*/
     private String headname;
-    @OneToMany(mappedBy = "department",cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "department",cascade ={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REMOVE },fetch = FetchType.EAGER)
     public Set<Employee> employees;
 
     public Department() {
@@ -59,4 +60,12 @@ public class Department {
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
+
+    /*public void add (Employee employees){
+        if(employees==null){
+            employees= new ArrayList<Employee>() ;
+
+        }
+
+    }*/
 }
