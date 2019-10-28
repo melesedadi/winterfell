@@ -2,7 +2,7 @@
 
 
 body{
-    background: url("/images/orange.jpg") no-repeat center center fixed;
+    background: url("/images/red-and-black1.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -15,7 +15,7 @@ body{
     width:1000px;
     background-color: #ff8080;
     padding-bottom: 2em;
-    background: linear-gradient(to right, #cccccc, #ff944d);
+    background: linear-gradient(to right, #cccccc, #ff3333);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <div th:replace="base::head"></div>
+
+<nav id="nav_bar">
+    <ul id="navmenu">
+        <li><a href="/">Home</a></li>
+        <li ><a href="/albumlist">Albums' Information</a></li>
+        <li><a class="current" href="/songlist">Songs' Information</a></li>
+        <li><a href="/addalbum">Add Albums</a></li>
+        <li><a href="/addsong">Add Songs</a></li>
+    </ul>
+</nav><br/>
+
+<br/>
+<div style="width: 1000px;margin-left: 300px;" class="row">
+
+    <table style="margin-top: 20px;" class="content-table">
+        <thead>
+        <tr>
+            <th>Song Genre&nbsp;</th>
+            <th>Album Title</th>
+            <th>Artist Name</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+        <tr th:each="song : ${songs}">
+            <td th:text="${song.songtitle}"></td>
+            <td th:text="${song.album.albumtitle}"></td>
+            <td th:text="${song.album.artistname}"></td>
+            <td>
+
+                <a th:href="@{/update_song/{id}(id=${song.id})}" class="btn btn-primary btn-lg" role="button">Update</a>
+
+                <a th:href="@{/detail_song/{id}(id=${song.id})}" class="btn btn-primary btn-lg" role="button">Details</a>
+
+                <a th:href="@{/delete_song/{id}(id=${song.id})}" class="btn btn-primary btn-lg" role="button">Delete</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<br/>
+<footer>
+    <div class="footer-main-div" style="margin-left: 300px; width: 1100px; height: 80px;">
+        <p style="color:#ffcce6; ">&copy; Copyright 2019 </p>
+
+
+    </div>
+
+</footer><br/>
+</body>
+</html>

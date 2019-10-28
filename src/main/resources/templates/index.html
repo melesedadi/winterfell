@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title></title>
 <div th:replace="base::head"></div>
 <nav id="nav_bar">
     <ul id="navmenu">
         <li><a class="current" href="/">Home</a></li>
-        <li ><a href="/departmentlist">Departments' Information</a></li>
-        <li><a href="/employeelist">Employees' Information</a></li>
-        <li><a href="/adddepartment">Add Departments</a></li>
-        <li><a href="/addemployee">Add Employees</a></li>
+        <li ><a href="/albumtlist">Albums' Information</a></li>
+        <li><a href="/songlist">Songs' Information</a></li>
+        <li><a href="/addalbum">Add Albums</a></li>
+        <li><a href="/addsong">Add Songs</a></li>
     </ul>
 </nav><br/>
 
@@ -18,44 +18,44 @@
 <table class="content-table">
     <thead>
     <tr>
-        <th>Department Name</th>
-        <th>Head of Department</th>
-        <th></th>
+        <th>Album Genre</th>
+        <th>Album Title</th>
+        <th>Artist Name</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="department : ${departments}">
+    <tr th:each="album : ${albums}">
 
-        <td th:text="${department.depname}"></td>
-        <td th:text="${department.headname}"></td>
+        <td th:text="${album.genre}"></td>
+        <td th:text="${album.artistname}"></td>
+        <td th:text="${album.albumtitle}"></td>
         <td>
-            <a th:href="@{update_department/{id}(id=${department.id})}" class="btn btn-primary btn-lg" role="button">Update</a>
-            <a th:href="@{detail_department/{id}(id=${department.id})}" class="btn btn-primary btn-lg" role="button">Details</a>
-            <a th:href="@{delete_department/{id}(id=${department.id})}" class="btn btn-primary btn-lg" role="button">Delete</a>
+            <a th:href="@{update_album/{id}(id=${album.id})}" class="btn btn-primary btn-lg" role="button">Update</a>
+            <a th:href="@{detail_album/{id}(id=${album.id})}" class="btn btn-primary btn-lg" role="button">Details</a>
+            <a th:href="@{delete_album/{id}(id=${album.id})}" class="btn btn-primary btn-lg" role="button">Delete</a>
         </td>
     </tr>
     </tbody>
 </table>
 
-<h4 style="margin: 30px;">Please enter the employees' information at the page of Add Employees. The recorded data will be listed below.</h4>
 
 <table class="content-table">
     <thead>
     <tr>
-        <th>Employee's Name&nbsp;&nbsp;</th>
-        <th>Job Title&nbsp;</th>
-        <th>Department Name</th>
+        <th>Song's Title</th>
+        <th>Album Title</th>
+        <th>Artist Name</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="employee : ${employees}">
-        <td th:text="${employee.name}"></td>
-        <td th:text="${employee.jobtitle}"></td>
-        <td th:text="${employee.department.depname}"></td>
+    <tr th:each="song : ${songs}">
+        <td th:text="${song.songtitle}"></td>
+        <td th:text="${song.album.albumtitle}"></td>
+        <td th:text="${song.album.artistname}"></td>
         <td>
-            <a th:href="@{update_employee/{id}(id=${employee.id})}" class="btn btn-primary btn-lg" role="button">Update</a>
-            <a th:href="@{detail_employee/{id}(id=${employee.id})}" class="btn btn-primary btn-lg" role="button">Details</a>
-            <a th:href="@{delete_employee/{id}(id=${employee.id})}" class="btn btn-primary btn-lg" role="button">Delete</a>
+            <a th:href="@{update_song/{id}(id=${song.id})}" class="btn btn-primary btn-lg" role="button">Update</a>
+            <a th:href="@{detail_song/{id}(id=${song.id})}" class="btn btn-primary btn-lg" role="button">Details</a>
+            <a th:href="@{delete_song/{id}(id=${song.id})}" class="btn btn-primary btn-lg" role="button">Delete</a>
         </td>
     </tr>
     </tbody>

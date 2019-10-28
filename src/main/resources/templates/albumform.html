@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <div th:replace="base::head"></div>
+
+<nav id="nav_bar">
+    <ul id="navmenu">
+        <li><a  href="/">Home</a></li>
+        <li ><a href="/albumlist">Albums' Information</a></li>
+        <li><a href="/songlist">Songs' Information</a></li>
+        <li><a class="current" href="/addalbum">Add Albums</a></li>
+        <li><a href="/song">Add Songs</a></li>
+    </ul>
+</nav><br/>
+
+
+<!--<div style="width: 1000px;height: 600px;margin-left: 300px;" class="row">-->
+
+<br/><br/>
+    <form action="#" enctype="multipart/form-data" th:action="@{/process}" th:object="${album}" method="post">
+
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{headshot}" />
+
+        Album Genre:&nbsp;<input type="text" th:field="*{genre}" />
+
+        <span th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>
+        <br>
+        Artist Name:&nbsp;<input type="text" th:field="*{artistname}" />
+
+        <span th:if="${#fields.hasErrors('artistname')}" th:errors="*{artistname}"></span>
+        <br>
+        Album Title:&nbsp;<input type="text" th:field="*{albumtitle}" />
+
+        <span th:if="${#fields.hasErrors('albumtitle')}" th:errors="*{albumtitle}"></span>
+        <br>
+
+    <!--    Album Title:&nbsp;<select style="margin:5px;border-radius: 5px;padding: 5px;" name="album" th:field="*{album}">
+
+        <option th:each="album : ${albums}"
+
+                th:value="${album.id}"
+
+                th:text="${album.title}"></option>
+
+    </select>
+        <br/>-->
+        <input hidden="hidden" style="margin:10px; border-radius: 5px;" type="file" name="file" id="file">
+        <button type="button"  id="custom-button" class="btn btn-warning btn-lg" role="button">Choose Album Photo</button>
+        <span id="custom-text">No file chosen, yet.</span>
+
+        <br>
+
+
+
+
+        <input type="submit" value="Submit" class="btn btn-primary btn-lg" role="button"/>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a style="margin-top: 10px;" href="/" class="btn btn-primary btn-lg" role="button">See All information of this album. </a><br/>
+
+    </form>
+
+
+
+<!--</div>-->
+
+<br/>
+<footer>
+    <div class="footer-main-div" style="margin-left: 300px; width: 1100px; height: 80px;">
+        <p style="color:#ffcce6; ">&copy; Copyright 2019 </p>
+
+
+    </div>
+
+</footer><br/>
+
+    <script type="text/javascript">
+        const realFileBtn= document.getElementById("file");
+        const customBtn=document.getElementById("custom-button");
+        const custom8Txt=document.getElementById("custom-text");
+
+        customBtn.addEventListener("click",function(){
+            realFileBtn.click();
+        });
+        realFileBtn.addEventListener("change",function () {
+            if(realFileBtn.value){
+                custom8Txt.innerHTML=realFileBtn.value+" has been chosen.";
+            }else {
+                custom8Txt.innerHTML="No file chosen,yet.";
+            }
+        });
+
+        /*for fakepath on Chrome
+            $(function() {
+                $(".inputWrapper").mousedown(function() {
+                    var button = $(this);
+                    button.addClass('clicked');
+                    setTimeout(function(){
+                        button.removeClass('clicked');
+                    },50);
+                });
+                $('input[type=file]').on('change', function(e) {
+                    var filename = $(e.currentTarget).val().replace(/^.*\\/, "");
+                    $this.parent().find('span').text(filename);
+                });
+            });*/
+    </script>
+</body>
+</html>

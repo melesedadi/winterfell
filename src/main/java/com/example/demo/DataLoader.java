@@ -9,22 +9,22 @@ import javax.transaction.Transactional;
 @Component
 public class DataLoader implements CommandLineRunner {
     @Autowired
-    DepartmentRepository departmentRepository ;
+    AlbumRepository albumRepository ;
 
 
 
     @Override
 
     public void run(String... strings) throws Exception {
-        Department department;
+        Album album;
 
-        department= new Department("Accounting",  "Marvin Gaye");
-        departmentRepository.save(department);
+        album= new Album("Traditional",  "Marvin Gaye","Quiet");
+        albumRepository.save(album);
 
-        department= new Department("HR",  "Russell Baker");
-        departmentRepository.save(department);
-        department= new Department("Management",  "Han Shan");
-        departmentRepository.save(department);
+        album= new Album("Pop",  "Russell Baker","Dark");
+        albumRepository.save(album);
+        album= new Album("Space",  "Han Shan","Sun");
+        albumRepository.save(album);
 
 
 

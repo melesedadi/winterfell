@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Show Songs</title>
+
+<div th:replace="base::head"></div>
+
+<nav id="nav_bar">
+    <ul id="navmenu">
+        <li><a  href="/">Home</a></li>
+        <li ><a href="/albumlist">Albums' Information</a></li>
+        <li><a class="current" href="/songlist">Songs' Information</a></li>
+        <li><a href="/addalbum">Add Albums</a></li>
+        <li><a href="/addsong">Add Songs</a></li>
+    </ul>
+</nav><br/>
+<div style="width: 1000px;margin-left: 300px;" class="row" >
+    <div class="box" style="width:600px;height: 700px;margin-left: 40px;color:darkred;">
+    <h4 style="margin-left: 50px;margin-top: 30px;">Song Details</h4><br/>
+
+        <div class="content">Song Title: <span th:text="${song.songtitle}"></span><br />
+
+        Album Title: <span th:text="${song.album.albumtitle}"></span><br />
+        </div>
+        <div  class="imgBx" style="margin:30px;" th:if="${song.headshot} !=null">
+            <img th:src="${song.headshot}" width="250px" height="350px" />
+
+        </div>
+    </div>
+</div>
+
+    <div th:replace="base::footer"></div>
+</body>
+</html>

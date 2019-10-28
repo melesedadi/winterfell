@@ -18,7 +18,7 @@ public class Employee {
     @Column(name = "employee_jobtitle", length = 250)
     private String jobtitle;
     private String headshot;
-    @ManyToOne(cascade ={CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REMOVE } ,fetch = FetchType.EAGER)
+    @ManyToOne(cascade ={CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE} ,fetch = FetchType.EAGER)
 
     @JoinColumn(name="department_id")
     private Department department;

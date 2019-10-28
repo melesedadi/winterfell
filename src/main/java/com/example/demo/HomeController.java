@@ -15,164 +15,193 @@ import java.util.Map;
 @Controller
 public class HomeController {
     @Autowired
-    DepartmentRepository departmentRepository;
+    AlbumRepository albumRepository;
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    SongRepository songRepository;
 
     @Autowired
     CloudinaryConfig cloudc;
 
     @RequestMapping("/")
     public String home(Model model){
-        model.addAttribute("departments", departmentRepository.findAll());
-        model.addAttribute("employees", employeeRepository.findAll());
+        model.addAttribute("albums", albumRepository.findAll());
+        model.addAttribute("songs", songRepository.findAll());
 
         return "index";
     }
 
 
 
-    @GetMapping("/adddepartment")
+    @GetMapping("/addalbum")
 
-    public String departmentForm(Model model){
-        model.addAttribute("department", new Department());
-        return "departmentform";
+    public String albumForm(Model model){
+        model.addAttribute("album", new Album());
+        return "albumform";
+    }
+
+/*
+    @PostMapping("/process")
+    public String processalbumForm(@Valid Album album, BindingResult result){
+
+        if (result.hasErrors()){
+            return "albumform"; }
+
+        albumRepository.save(album);
+
+        return "redirect:/albumlist";
+    }*/
+
+
+    @RequestMapping("/albumlist")
+
+    public String albumList(Model model){
+
+        model.addAttribute("albums", albumRepository.findAll());
+
+        return "albumlist";
+    }
+
+
+    @GetMapping("/addsong")
+
+    public String songForm(Model model){
+
+        model.addAttribute("albums", albumRepository.findAll());
+
+        model.addAttribute("song", new Song());
+
+        return "songform";
     }
 
 
     @PostMapping("/process")
-    public String processDepartmentForm(@Valid Department department, BindingResult result){
 
-        if (result.hasErrors()){
-            return "departmentform"; }
-
-        departmentRepository.save(department);
-
-        return "redirect:/departmentlist";
-    }
-
-
-    @RequestMapping("/departmentlist")
-
-    public String departmentList(Model model){
-
-        model.addAttribute("departments", departmentRepository.findAll());
-
-        return "departmentlist";
-    }
-
-
-    @GetMapping("/addemployee")
-
-    public String employeeForm(Model model){
-
-        model.addAttribute("departments", departmentRepository.findAll());
-
-        model.addAttribute("employee", new Employee());
-
-        return "employeeform";
-    }
-
-
-    @PostMapping("/processempoloyee")
-
-    public String processEmployeeForm(@RequestParam(value = "file", required = true) MultipartFile file, @Valid Employee employee,Model model, BindingResult result){
+    public String processAlbumForm(@RequestParam(value = "file", required = true) MultipartFile file, @Valid Album album,Model model, BindingResult result){
        //If the one of the field is empty, the model will know. Otherwise it won't has the validation function.
         //model.addAttribute("employee",employee);
 
         if (result.hasErrors()){
 
-            return "redirect:/addemployee";
+            return "redirect:/addalbum";
         }
        if (file.isEmpty()){
-            return "redirect:/addemployee";
+            return "redirect:/addalbum";
         }
         try {
             Map uploadResult =cloudc.upload(file.getBytes(),
                     ObjectUtils.asMap("resourcetype", "auto"));
-            employee.setHeadshot(uploadResult.get("url").toString());
-            employeeRepository.save(employee);
+            album.setHeadshot(uploadResult.get("url").toString());
+            albumRepository.save(album);
         } catch (IOException e){
             e.printStackTrace();
-            return "redirect:/addemployee";
+            return "redirect:/addalbum";
         }
 
 
-        employeeRepository.save(employee);
+        albumRepository.save(album);
 
-        return "redirect:/employeelist";
+        return "redirect:/albumlist";
     }
 
 
-    @RequestMapping("/employeelist")
+    @RequestMapping("/songlist")
 
-    public String employeeList(Model model){
+    public String songList(Model model){
 
-        model.addAttribute("employees", employeeRepository.findAll());
+        model.addAttribute("songs", songRepository.findAll());
 
-        return "employeelist";
+        return "songlist";
     }
 
 
-    @RequestMapping("/detail_department/{id}")
+    @RequestMapping("/detail_album/{id}")
 
-    public String showDepartment(@PathVariable("id") long id, Model model){
+    public String showAlbum(@PathVariable("id") long id, Model model){
 
-        model.addAttribute("department", departmentRepository.findById(id).get());
-        return "showdepartment";
+        model.addAttribute("album", albumRepository.findById(id).get());
+        return "showalbum";
     }
 
 
-    @RequestMapping("/update_department/{id}")
+    @RequestMapping("/update_album/{id}")
 
-    public String updateDepartment(@PathVariable("id") long id, Model model){
+    public String updateAlbum(@PathVariable("id") long id, Model model){
 
-        model.addAttribute("department", departmentRepository.findById(id).get());
+        model.addAttribute("album", albumRepository.findById(id).get());
 
-        return "departmentform";
+        return "albumform";
     }
 
 
-    @RequestMapping("/delete_department/{id}")
+    @RequestMapping("/delete_album/{id}")
 
     public String delDepartment(@PathVariable("id") long id){
 
-        departmentRepository.deleteById(id);
+        albumRepository.deleteById(id);
         return "redirect:/";
     }
 
 
-    @RequestMapping("/detail_employee/{id}")
+    @PostMapping("/processform")
+
+    public String processSongForm(@RequestParam(value = "file", required = true) MultipartFile file, @Valid Song song,Model model, BindingResult result){
+        //If the one of the field is empty, the model will know. Otherwise it won't has the validation function.
+        //model.addAttribute("employee",employee);
+
+        if (result.hasErrors()){
+
+            return "redirect:/addsong";
+        }
+        if (file.isEmpty()){
+            return "redirect:/addsong";
+        }
+        try {
+            Map uploadResult =cloudc.upload(file.getBytes(),
+                    ObjectUtils.asMap("resourcetype", "auto"));
+            song.setHeadshot(uploadResult.get("url").toString());
+            songRepository.save(song);
+        } catch (IOException e){
+            e.printStackTrace();
+            return "redirect:/addalbum";
+        }
+
+
+        songRepository.save(song);
+
+        return "redirect:/albumlist";
+    }
+
+    @RequestMapping("/detail_song/{id}")
 
     public String showEmployee(@PathVariable("id") long id, Model model){
 
-        model.addAttribute("employee", employeeRepository.findById(id).get());
+        model.addAttribute("song", songRepository.findById(id).get());
 
-        return "showemployee";
+        return "showsong";
 
     }
 
 
-    @RequestMapping("/update_employee/{id}")
+    @RequestMapping("/update_song/{id}")
 
     public String updateEmployee(@PathVariable("id") long id, Model model){
 
-        model.addAttribute("employee", employeeRepository.findById(id).get());
+        model.addAttribute("song", songRepository.findById(id).get());
 
-        model.addAttribute("departments",departmentRepository.findAll());
+        model.addAttribute("albums",albumRepository.findAll());
 
-        return "employeeform";
+        return "songform";
 
     }
 
 
 
-    @RequestMapping("/delete_employee/{id}")
+    @RequestMapping("/delete_song/{id}")
 
-    public String delEmployee(@PathVariable("id") long id){
+    public String delSong(@PathVariable("id") long id){
 
-        employeeRepository.deleteById(id);
+        songRepository.deleteById(id);
 
         return "redirect:/";
 

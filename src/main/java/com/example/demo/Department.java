@@ -16,7 +16,7 @@ public class Department {
     /*@NotNull
     @Size(min=3)*/
     private String headname;
-    @OneToMany(mappedBy = "department",cascade ={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REMOVE },fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "department",cascade ={CascadeType.PERSIST,CascadeType.DETACH ,CascadeType.MERGE},fetch = FetchType.LAZY)
     public Set<Employee> employees;
 
     public Department() {
@@ -67,5 +67,11 @@ public class Department {
 
         }
 
+    }*/
+    /*
+    public void add (Employee employee){
+        if(employees==null){employees=new ArrayList<>()}
+        employees.add(employee);
+        employee.getDepartment(this);
     }*/
 }

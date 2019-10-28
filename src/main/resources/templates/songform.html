@@ -8,41 +8,36 @@
 <nav id="nav_bar">
     <ul id="navmenu">
         <li><a  href="/">Home</a></li>
-        <li ><a href="/departmentlist">Departments' Information</a></li>
-        <li><a href="/employeelist">Employees' Information</a></li>
-        <li><a href="/adddepartment">Add Departments</a></li>
-        <li><a class="current" href="/addemployee">Add Employees</a></li>
+        <li ><a href="/albumlist">Albums' Information</a></li>
+        <li><a href="/songlist">Songs' Information</a></li>
+        <li><a href="/addalbum">Add Albums</a></li>
+        <li><a class="current" href="/addsong">Add Song</a></li>
     </ul>
 </nav><br/>
 
 <br/><br/>
 
-<form action="#" enctype="multipart/form-data" th:action="@{/processempoloyee}" th:object="${employee}" method="post">
+<form action="#" enctype="multipart/form-data" th:action="@{/processform}" th:object="${song}" method="post">
 
     <input type="hidden" th:field="*{id}" />
 
-    Employee Name:&nbsp;<input type="text" th:field="*{name}" />
+    Song's Title:&nbsp;<input type="text" th:field="*{songtitle}" />
 
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">&nbsp;&nbsp;</span><br/>
+    <span th:if="${#fields.hasErrors('songtitle')}" th:errors="*{songtitle}">&nbsp;&nbsp;</span><br/>
 
-    Job Title:&nbsp;<input type="text" th:field="*{jobtitle}" />
 
-    <span th:if="${#fields.hasErrors('jobtitle')}" th:errors="*{jobtitle}"></span>
+    Album Title:&nbsp;<select style="margin:5px;border-radius: 5px;padding: 5px;" name="album" th:field="*{album}">
 
-    <br>
+    <option th:each="album : ${albums}"
 
-    Department:&nbsp;<select style="margin:5px;border-radius: 5px;padding: 5px;" name="department" th:field="*{department}">
+            th:value="${album.id}"
 
-    <option th:each="department : ${departments}"
-
-            th:value="${department.id}"
-
-            th:text="${department.depname}"></option>
+            th:text="${album.albumtitle}"></option>
 
 </select>
 <br/>
     <input hidden="hidden" style="margin:10px; border-radius: 5px;" type="file" name="file" id="file">
-    <button type="button"  id="custom-button" class="btn btn-warning btn-lg" role="button">Choose Employee Photo</button>
+    <button type="button"  id="custom-button" class="btn btn-warning btn-lg" role="button">Choose Album Photo</button>
     <span id="custom-text">No file chosen, yet.</span>
 
     <br>
@@ -55,7 +50,7 @@
 <br/>
 <footer>
     <div class="footer-main-div" style="margin-left: 300px; width: 1100px; height: 80px;">
-        <p style="color:#ffcce6; ">&copy; Copyright 2019 Emily Marinovich.</p>
+        <p style="color:#ffcce6; ">&copy; Copyright 2019 </p>
 
 
     </div>

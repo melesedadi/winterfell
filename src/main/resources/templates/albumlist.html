@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Department List</title>
+        <div th:replace="base::head"></div>
+
+
+
+        <nav id="nav_bar">
+            <ul id="navmenu">
+                <li><a  href="/">Home</a></li>
+                <li ><a class="current" href="/albumlist">Albums' Information</a></li>
+                <li><a href="/songlist">Songs' Information</a></li>
+                <li><a href="/addalbum">Add Albums</a></li>
+                <li><a href="/addsong">Add Songs</a></li>
+            </ul>
+        </nav><br/>
+
+
+<div style="width: 1000px;margin-left: 300px;" class="row">
+            <table class="content-table">
+                <thead>
+                <tr>
+                    <th>Album  Genre</th>
+                    <th>Artist Name</th>
+                    <th>Album Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="album : ${albums}">
+                    <td th:text="${album.genre}"></td>
+                    <td th:text="${album.artistname}"></td>
+                    <td th:text="${album.albumtitle}"></td>
+                    <td>
+                        <a th:href="@{/update_album/{id}(id=${album.id})}" class="btn btn-primary btn-lg" role="button">Update</a>
+                        <a th:href="@{/detail_album/{id}(id=${album.id})}" class="btn btn-primary btn-lg" role="button">Details</a>
+                        <a th:href="@{/delete_album/{id}(id=${album.id})}" class="btn btn-primary btn-lg" role="button">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+    <ul>
+
+
+             <div th:each="album:${albums}">
+                <h5 th:text="${album.albumtitle}">Album Title</h5>
+                <h6 th:inline="text"> Artist Name: [[${album.artistmame}]].</h6>
+                <ul style="list-style-type: square;">
+                    <th:block th:each="song:${album.songs}">
+                        <li th:inline="text"><b>[[${song.songtitle}]]: </b>[[${album.artistmame}]]</li>
+                    </th:block>
+                </ul>
+            <br/>
+
+            </div>
+
+
+    <br/>
+    </ul>
+            <br/>
+</div>
+        <footer>
+            <div class="footer-main-div" style="margin-left: 300px; width: 1100px; height: 80px;">
+                <p style="color:#ffcce6; ">&copy; Copyright 2019 </p>
+
+
+            </div>
+
+        </footer><br/>
+
+    </body>
+
+</html>

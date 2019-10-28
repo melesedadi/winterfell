@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Departments</title>
+<div th:replace="base::head"></div>
+
+<nav id="nav_bar">
+    <ul id="navmenu">
+        <li><a  href="/">Home</a></li>
+        <li ><a class="current" href="/albumlist">Albums' Information</a></li>
+        <li><a href="/songlist">Songs' Information</a></li>
+        <li><a href="/addalbum">Add Albumss</a></li>
+        <li><a href="/addsong">Add Songs</a></li>
+    </ul>
+</nav><br/>
+<div style="width: 1000px;margin-left: 300px;" class="row">private String songtitle;
+
+
+
+    <h5 style="margin-left: 50px;">Album Title: <span th:text="${album.albumtitle}"></span><br /></h5>
+
+    <br>
+    <table class="content-table">
+        <thead>
+    <tr>
+        <th>Song Title</th>
+        <th>Artist Name</th>
+        <th>Album Genre</th>
+    </tr>
+        </thead>
+        <tbody>
+    <tr th:each="song : ${album.songs}">
+        <td th:text="${song.songtitle}"></td>
+        <div  class="imgBx" style="margin:30px;" th:if="${song.headshot} !=null">
+            <img th:src="${song.headshot}" width="250px" height="350px" />
+
+        </div>
+    </tr>
+        </tbody>
+</table>
+</div>
+<div th:replace="base::footer"></div>
+</body>
+</html>
