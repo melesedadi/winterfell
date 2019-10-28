@@ -47,10 +47,10 @@
 
              <div th:each="album:${albums}">
                 <h5 th:text="${album.albumtitle}">Album Title</h5>
-                <h6 th:inline="text"> Artist Name: [[${album.artistmame}]].</h6>
+                <h6 th:inline="text"> Artist Name: [[${album.artistname}]].</h6>
                 <ul style="list-style-type: square;">
                     <th:block th:each="song:${album.songs}">
-                        <li th:inline="text"><b>[[${song.songtitle}]]: </b>[[${album.artistmame}]]</li>
+                        <li th:inline="text"><b>[[${song.songtitle}]]</b><!--[[${album.artistname}]]--></li>
                     </th:block>
                 </ul>
             <br/>
