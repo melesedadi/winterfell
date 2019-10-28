@@ -23,13 +23,13 @@ public class HomeController {
     @Autowired
     CloudinaryConfig cloudc;
 
-    @RequestMapping("/")
-    public String home(Model model){
-        model.addAttribute("albums", albumRepository.findAll());
-        model.addAttribute("songs", songRepository.findAll());
-
-        return "index";
-    }
+//    @RequestMapping("/")
+//    public String home(Model model){
+//        model.addAttribute("albums", albumRepository.findAll());
+//        model.addAttribute("songs", songRepository.findAll());
+//
+//        return "index";
+//    }
 
 
 
